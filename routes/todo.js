@@ -6,7 +6,7 @@ router.post('/add/todo', (req, res) => {
     const NewTodo = new Todo({todo: todo});
     NewTodo.save()
     .then(() => {
-        console.log("Successfully added todo task."),
+        console.log("Successfully added Note."),
         res.redirect('/add');
     })
     .catch(err => console.log(err));
@@ -17,7 +17,7 @@ router.post('/update/todo/:_id', async (req, res) => {
     const { _id } = req.params;
     Todo.updateOne( { _id: _id}, {$set: { todo: updateTodo }})
     .then(() => {
-        console.log("Task Updated Successfully.");
+        console.log("Note Updated Successfully.");
         res.redirect('/update');
     })
 })
@@ -26,7 +26,7 @@ router.post('/update/todo/:_id', async (req, res) => {
     const {_id} = req.params;
     Todo.deleteOne({ _id })
     .then(() => {
-        console.log("Task deleted successfully."),
+        console.log("Note deleted successfully."),
         res.redirect('/delete');
     })
     .catch((err) => console.log(err));
